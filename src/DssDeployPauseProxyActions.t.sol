@@ -1,11 +1,13 @@
-pragma solidity >=0.5.12;
+// SPDX-License-Identifier: MIT
+
+pragma solidity >=0.6.12;
 
 import "ds-test/test.sol";
 
 import "./DssDeployPauseProxyActions.sol";
 import {DssDeployTestBase} from "dss-deploy/DssDeploy.t.base.sol";
 import {DSProxyFactory, DSProxy} from "ds-proxy/proxy.sol";
-import {PipLike} from "dss/spot.sol";
+import {PipLike} from "dss-core/spot.sol";
 
 contract ProxyCalls {
     DSProxy proxy;
@@ -33,7 +35,7 @@ contract ProxyCalls {
 }
 
 contract DssDeployPauseProxyActionsTest is DssDeployTestBase, ProxyCalls {
-    function setUp() public {
+    function setUp() override public {
         super.setUp();
         deploy();
         DSProxyFactory factory = new DSProxyFactory();
